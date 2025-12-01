@@ -1,7 +1,7 @@
-package com.locallink.controller;
+package com.example.demo.controller;
 
-import com.locallink.model.Cliente;
-import com.locallink.repository.ClienteRepository;
+import com.example.demo.model.Cliente;
+import com.example.demo.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

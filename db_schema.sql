@@ -1,0 +1,10 @@
+CREATE DATABASE locallink_db;
+USE locallink_db;
+
+CREATE TABLE clientes (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL UNIQUE,
+    telefono VARCHAR(15),
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
+);
