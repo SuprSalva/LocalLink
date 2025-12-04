@@ -1,52 +1,88 @@
-<div style="padding: 20px; font-family: sans-serif;">
-  <h1>LocalLink - Gestión de Clientes (HU01)</h1>
-
-  <div style="background: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-    <h3>{{ clienteForm.id ? 'Editar Cliente' : 'Nuevo Cliente' }}</h3>
-
-    <label>Nombre:</label><br>
-    <input type="text" [(ngModel)]="clienteForm.nombre" placeholder="Ej. Juan Pérez"><br><br>
-
-    <label>Correo:</label><br>
-    <input type="email" [(ngModel)]="clienteForm.correo" placeholder="juan@email.com"><br><br>
-
-    <label>Teléfono:</label><br>
-    <input type="text" [(ngModel)]="clienteForm.telefono" placeholder="477 123 4567"><br><br>
-
-    <button (click)="guardarCliente()" style="background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer;">
-      {{ clienteForm.id ? 'Actualizar' : 'Registrar' }}
-    </button>
-
-    <button (click)="limpiarFormulario()" style="margin-left: 10px; cursor: pointer;">
-      Cancelar
-    </button>
+<div class="container">
+  <!-- Encabezado -->
+  <div class="header">
+    <h1>👥 Gestión de Clientes</h1>
   </div>
 
-  <hr>
+  <!-- Formulario -->
+  <div class="card cliente-form">
+    <h3>{{ clienteForm.id ? '✏️ Editar Cliente' : '➕ Nuevo Cliente' }}</h3>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" [(ngModel)]="clienteForm.nombre" 
+               class="form-control" placeholder="Ej. Juan Pérez García">
+      </div>
+    </div>
 
-  <h3>Cartera de Clientes</h3>
-  <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
-    <thead>
-      <tr style="background: #333; color: white;">
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Teléfono</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <td>{{ cliente.id }}</td>
-        <td>{{ cliente.nombre }}</td>
-        <td>{{ cliente.correo }}</td>
-        <td>{{ cliente.telefono }}</td>
-        <td>
-          <button (click)="editarCliente(cliente)" style="background: #ffc107; border: none; padding: 5px 10px; cursor: pointer;">
-            Editar
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" [(ngModel)]="clienteForm.correo" 
+               class="form-control" placeholder="juan.perez@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" [(ngModel)]="clienteForm.telefono" 
+               class="form-control" placeholder="477 123 4567">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button (click)="guardarCliente()" class="btn btn-success">
+        {{ clienteForm.id ? '📝 Actualizar' : '💾 Guardar' }}
+      </button>
+      
+      <button (click)="limpiarFormulario()" class="btn btn-secondary">
+        ❌ Cancelar
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de clientes -->
+  <div class="card">
+    <h3>📋 Cartera de Clientes</h3>
+    
+    <div *ngIf="clientes.length === 0" class="loading">
+      Cargando clientes...
+    </div>
+
+    <div *ngIf="clientes.length > 0" class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Información de contacto</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>
+              <strong>#{{ cliente.id }}</strong>
+            </td>
+            <td>
+              <div class="cliente-info">
+                <span class="cliente-nombre">{{ cliente.nombre }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="cliente-info">
+                <span class="cliente-email">📧 {{ cliente.correo }}</span>
+                <span class="cliente-contacto">📱 {{ cliente.telefono || 'Sin teléfono' }}</span>
+              </div>
+            </td>
+            <td>
+              <button (click)="editarCliente(cliente)" class="btn btn-warning btn-icon">
+                Editar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

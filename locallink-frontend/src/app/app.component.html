@@ -1,14 +1,38 @@
-<div style="padding: 20px; font-family: sans-serif;">
-  <!-- Menú de navegación -->
-  <div style="background: #333; color: white; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
-    <a routerLink="/clientes" style="color: white; margin-right: 20px; text-decoration: none; padding: 5px 10px;">
-      📋 Clientes
+<!-- Barra de navegación -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/clientes" class="logo">
+      <span class="logo-icon">🔗</span>
+      <span>LocalLink</span>
     </a>
-    <a routerLink="/productos" style="color: white; margin-right: 20px; text-decoration: none; padding: 5px 10px;">
-      🛒 Productos
-    </a>
+    
+    <div class="nav-menu">
+      <a routerLink="/clientes" 
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: true}" 
+         class="nav-link">
+        <span>👥</span>
+        <span>Clientes</span>
+      </a>
+      
+      <a routerLink="/servicios" 
+         routerLinkActive="active" 
+         class="nav-link">
+        <span>🧪</span>
+        <span>Servicios</span>
+      </a>
+    </div>
   </div>
+</nav>
 
-  <!-- Aquí se cargará el componente correspondiente -->
+<!-- Contenido principal -->
+<main class="main-content">
   <router-outlet></router-outlet>
-</div>
+</main>
+
+<!-- Pie de página -->
+<footer class="footer">
+  <div class="footer-content">
+    
+  </div>
+</footer>

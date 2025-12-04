@@ -1,0 +1,95 @@
+/* Puedes agregar estilos específicos aquí si los necesitas */
+/* Estilos específicos para servicios */
+
+.servicio-form {
+  max-width: 800px;
+}
+
+.precio-input {
+  max-width: 200px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox-group label {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Tarjeta de servicio en tabla */
+.servicio-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.servicio-nombre {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.servicio-descripcion {
+  font-size: 14px;
+  color: black;
+  line-height: 1.4;
+}
+
+.servicio-precio {
+  font-weight: 700;
+  color: #27ae60;
+  font-size: 18px;
+}
+
+/* Estados */
+.estado-badge {
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.estado-activo {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.estado-inactivo {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Acciones */
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+/* Iconos de servicios */
+.icono-servicio {
+  font-size: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Contador */
+.contador {
+  background: #3498db;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 10px;
+}
