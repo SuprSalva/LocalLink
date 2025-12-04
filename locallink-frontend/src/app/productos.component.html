@@ -1,0 +1,78 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <h1>LocalLink - Gestión de Productos</h1>
+
+  <!-- Formulario de Producto -->
+  <div style="background: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+    <h3>{{ productoForm.id ? 'Editar Producto' : 'Nuevo Producto' }}</h3>
+
+    <label>Nombre:</label><br>
+    <input type="text" [(ngModel)]="productoForm.nombre" placeholder="Ej. Insecticida" style="width: 300px;"><br><br>
+
+    <label>Descripción:</label><br>
+    <textarea [(ngModel)]="productoForm.descripcion" placeholder="Descripción del producto" rows="3" style="width: 300px;"></textarea><br><br>
+
+    <label>Precio ($):</label><br>
+    <input type="number" [(ngModel)]="productoForm.precio" placeholder="0.00" step="0.01" min="0"><br><br>
+
+    <label>Categoría:</label><br>
+    <input type="text" [(ngModel)]="productoForm.categoria" placeholder="Ej. Insecticidas"><br><br>
+
+    <label>Stock:</label><br>
+    <input type="number" [(ngModel)]="productoForm.stock" placeholder="0" min="0"><br><br>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="productoForm.activo">
+      Activo
+    </label><br><br>
+
+    <button (click)="guardarProducto()" style="background: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+      {{ productoForm.id ? 'Actualizar' : 'Registrar' }}
+    </button>
+
+    <button (click)="limpiarFormulario()" style="margin-left: 10px; padding: 10px 20px; cursor: pointer;">
+      Cancelar
+    </button>
+  </div>
+
+  <hr>
+
+  <!-- Lista de Productos -->
+  <h3>Catálogo de Productos</h3>
+  <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr style="background: #333; color: white;">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Stock</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion || 'Sin descripción' }}</td>
+        <td>${{ formatPrice(producto.precio) }}</td>
+        <td>{{ producto.categoria || 'General' }}</td>
+        <td>{{ producto.stock || 0 }}</td>
+        <td>
+          <span [style.color]="producto.activo ? 'green' : 'red'">
+            {{ producto.activo ? 'Disponible' : 'No disponible' }}
+          </span>
+        </td>
+        <td>
+          <button (click)="editarProducto(producto)" style="background: #ffc107; border: none; padding: 5px 10px; cursor: pointer; margin-right: 5px;">
+            Editar
+          </button>
+          <button (click)="eliminarProducto(producto.id!)" style="background: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

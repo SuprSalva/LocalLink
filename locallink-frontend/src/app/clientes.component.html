@@ -1,0 +1,52 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <h1>LocalLink - Gestión de Clientes (HU01)</h1>
+
+  <div style="background: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+    <h3>{{ clienteForm.id ? 'Editar Cliente' : 'Nuevo Cliente' }}</h3>
+
+    <label>Nombre:</label><br>
+    <input type="text" [(ngModel)]="clienteForm.nombre" placeholder="Ej. Juan Pérez"><br><br>
+
+    <label>Correo:</label><br>
+    <input type="email" [(ngModel)]="clienteForm.correo" placeholder="juan@email.com"><br><br>
+
+    <label>Teléfono:</label><br>
+    <input type="text" [(ngModel)]="clienteForm.telefono" placeholder="477 123 4567"><br><br>
+
+    <button (click)="guardarCliente()" style="background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+      {{ clienteForm.id ? 'Actualizar' : 'Registrar' }}
+    </button>
+
+    <button (click)="limpiarFormulario()" style="margin-left: 10px; cursor: pointer;">
+      Cancelar
+    </button>
+  </div>
+
+  <hr>
+
+  <h3>Cartera de Clientes</h3>
+  <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr style="background: #333; color: white;">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.id }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.correo }}</td>
+        <td>{{ cliente.telefono }}</td>
+        <td>
+          <button (click)="editarCliente(cliente)" style="background: #ffc107; border: none; padding: 5px 10px; cursor: pointer;">
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
